@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nutrition Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="main-card">
+
+    <div class="top-bar">
+        <h2>🥗 Nutrition Deficiency Tracker</h2>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+
+    <form action="/analyze" method="POST" class="nutrition-form">
+
+        <label>Leafy Vegetables (per week)</label>
+        <input type="number" name="leafy" min="0" required>
+
+        <label>Fruits (per week)</label>
+        <input type="number" name="fruits" min="0" required>
+
+        <label>Milk/Dairy (per week)</label>
+        <input type="number" name="milk" min="0" required>
+
+        <label>Eggs (per week)</label>
+        <input type="number" name="eggs" min="0" required>
+
+        <label>Meat/Fish (per week)</label>
+        <input type="number" name="meat" min="0" required>
+
+        <label>Pulses/Legumes (per week)</label>
+        <input type="number" name="pulses" min="0" required>
+
+        <label>Sunlight (minutes per day)</label>
+        <input type="number" name="sunlight" min="0" required>
+
+        <button type="submit" class="analyze-btn">Analyze</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -3,113 +3,36 @@
 <head>
     <title>Nutrition Report</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
 <div class="main-card">
 
     <div class="top-bar">
-        <h1>📊 Nutrition Report</h1>
-        <button onclick="toggleDarkMode()" class="dark-toggle">🌙</button>
+        <h2>📊 Your Nutrition Report</h2>
+        <a href="/logout" class="logout-btn">Logout</a>
     </div>
 
-    <!-- Animated Circular Score -->
-    <div class="progress-container">
-        <svg class="progress-ring" width="160" height="160">
-            <circle class="progress-ring__background"
-                stroke="#eee"
-                stroke-width="10"
-                fill="transparent"
-                r="70"
-                cx="80"
-                cy="80"/>
-            <circle class="progress-ring__circle"
-                stroke="#ff7e5f"
-                stroke-width="10"
-                fill="transparent"
-                r="70"
-                cx="80"
-                cy="80"/>
-        </svg>
-        <div class="score-text">
-            <h2 id="score">{{ overall }}</h2>
-            <p>Score</p>
-        </div>
+    <div class="score-box">
+        <h1>{{ overall }}/100</h1>
+        <p>Overall Nutrition Score</p>
     </div>
 
-    <div class="result-box">
-        <p><strong>BMI:</strong> {{ bmi }}</p>
-        <p>🩸 Iron Risk: <span class="{{ iron }}">{{ iron }}</span></p>
-        <p>💪 Protein Risk: <span class="{{ protein }}">{{ protein }}</span></p>
-        <p>🦴 Calcium Risk: <span class="{{ calcium }}">{{ calcium }}</span></p>
-        <p>☀ Vitamin D Risk: <span class="{{ vitamin_d }}">{{ vitamin_d }}</span></p>
-        <p>🧠 Vitamin B12 Risk: <span class="{{ b12 }}">{{ b12 }}</span></p>
+    <div class="recommendation-box">
+        <h3>🧠 Personalized Recommendations</h3>
+        <ul>
+            {% for r in recommendation %}
+                <li>{{ r }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <!-- Chart -->
-    <canvas id="nutritionChart"></canvas>
+    <div class="button-group">
+        <a href="/download" class="download-btn">Download PDF</a>
+        <a href="/" class="back-btn">Check Again</a>
+    </div>
 
-    <a href="/" class="back-btn">Check Again</a>
 </div>
-
-<script>
-    // Animated Circle Logic
-    const score = parseInt(document.getElementById("score").innerText);
-    const circle = document.querySelector('.progress-ring__circle');
-    const radius = 70;
-    const circumference = 2 * Math.PI * radius;
-
-    circle.style.strokeDasharray = circumference;
-    circle.style.strokeDashoffset = circumference;
-
-    function setProgress(percent) {
-        const offset = circumference - percent / 100 * circumference;
-        circle.style.strokeDashoffset = offset;
-    }
-
-    setTimeout(() => {
-        setProgress(score);
-    }, 300);
-
-    // Chart.js
-    const ctx = document.getElementById('nutritionChart');
-
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Iron', 'Protein', 'Calcium', 'Vitamin D', 'B12'],
-            datasets: [{
-                data: [
-                    "{{ iron }}",
-                    "{{ protein }}",
-                    "{{ calcium }}",
-                    "{{ vitamin_d }}",
-                    "{{ b12 }}"
-                ].map(x => x === "Low" ? 90 : x === "Moderate" ? 60 : 30),
-                backgroundColor: [
-                    '#ff6384',
-                    '#36a2eb',
-                    '#ffce56',
-                    '#4bc0c0',
-                    '#9966ff'
-                ]
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }
-    });
-
-    // Dark mode
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-    }
-</script>
 
 </body>
 </html>
