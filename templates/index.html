@@ -5,28 +5,59 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Nutrition Health Check</h1>
 
-        <form action="/analyze" method="POST">
+<div class="main-card">
+    <h1>🥗 Nutrition Deficiency Tracker</h1>
+    <p class="subtitle">Check your weekly nutrition health status</p>
 
+    <form action="/analyze" method="POST">
+
+        <div class="section">
+            <h2>Basic Information</h2>
             <input type="number" name="age" placeholder="Age" required>
             <input type="number" name="weight" placeholder="Weight (kg)" required>
             <input type="number" name="height" placeholder="Height (cm)" required>
+        </div>
 
-            <h3>Weekly Intake (0–7)</h3>
-            <input type="number" name="leafy" placeholder="Leafy Vegetables" min="0" max="7" required>
-            <input type="number" name="fruits" placeholder="Fruits" min="0" max="7" required>
-            <input type="number" name="milk" placeholder="Milk/Dairy" min="0" max="7" required>
-            <input type="number" name="eggs" placeholder="Eggs" min="0" max="7" required>
-            <input type="number" name="meat" placeholder="Meat/Fish" min="0" max="7" required>
-            <input type="number" name="pulses" placeholder="Pulses/Beans" min="0" max="7" required>
-            <input type="number" name="junk" placeholder="Junk Food" min="0" max="7" required>
+        <div class="section">
+            <h2>Weekly Food Intake (0–7 days)</h2>
 
-            <input type="number" name="sunlight" placeholder="Sunlight (minutes/day)" required>
+            <label>Leafy Vegetables</label>
+            <input type="range" name="leafy" min="0" max="7" value="3" oninput="this.nextElementSibling.value = this.value">
+            <output>3</output>
 
-            <button type="submit">Analyze</button>
-        </form>
-    </div>
+            <label>Fruits</label>
+            <input type="range" name="fruits" min="0" max="7" value="3" oninput="this.nextElementSibling.value = this.value">
+            <output>3</output>
+
+            <label>Milk/Dairy</label>
+            <input type="range" name="milk" min="0" max="7" value="3" oninput="this.nextElementSibling.value = this.value">
+            <output>3</output>
+
+            <label>Eggs</label>
+            <input type="range" name="eggs" min="0" max="7" value="2" oninput="this.nextElementSibling.value = this.value">
+            <output>2</output>
+
+            <label>Meat/Fish</label>
+            <input type="range" name="meat" min="0" max="7" value="2" oninput="this.nextElementSibling.value = this.value">
+            <output>2</output>
+
+            <label>Pulses/Beans</label>
+            <input type="range" name="pulses" min="0" max="7" value="3" oninput="this.nextElementSibling.value = this.value">
+            <output>3</output>
+
+            <label>Junk Food</label>
+            <input type="range" name="junk" min="0" max="7" value="1" oninput="this.nextElementSibling.value = this.value">
+            <output>1</output>
+
+            <label>Sunlight (minutes/day)</label>
+            <input type="range" name="sunlight" min="0" max="60" value="20" oninput="this.nextElementSibling.value = this.value">
+            <output>20</output>
+        </div>
+
+        <button type="submit">Analyze My Nutrition</button>
+    </form>
+</div>
+
 </body>
 </html>

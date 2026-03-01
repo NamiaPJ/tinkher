@@ -1,28 +1,101 @@
 body {
-    font-family: Arial;
-    background: #f2f8f2;
-    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    transition: 0.3s;
 }
 
-.container {
-    width: 50%;
-    margin: auto;
-    padding: 20px;
+.main-card {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ccc;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px #6a444433;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
-input {
-    width: 80%;
-    padding: 8px;
-    margin: 6px;
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-button {
-    padding: 10px 20px;
-    background: #4CAF50;
-    color: white;
+.dark-toggle {
     border: none;
-    border-radius: 5px;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.progress-container {
+    position: relative;
+    width: 160px;
+    margin: 20px auto;
+}
+
+.progress-ring__circle {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.score-text {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+}
+
+canvas {
+    margin-top: 30px;
+}
+
+.result-box {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.Low { color: green; font-weight: bold; }
+.Moderate { color: orange; font-weight: bold; }
+.High { color: red; font-weight: bold; }
+
+.back-btn {
+    display: inline-block;
+    margin-top: 25px;
+    text-decoration: none;
+    background: #2193b0;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #186a85;
+    transform: scale(1.05);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #1e1e1e;
+}
+
+.dark-mode .main-card {
+    background: #2c2c2c;
+    color: white;
+}
+
+.dark-mode .back-btn {
+    background: #ff7e5f;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
