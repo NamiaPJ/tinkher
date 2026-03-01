@@ -1,102 +1,88 @@
 body {
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    background: linear-gradient(135deg, #667eea, #764ba2);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    transition: 0.3s;
-    text-align: center;
 }
 
-.main-card {
-    background: white;
-    padding: 30px;
-    width: 90%;
-    max-width: 600px;
+/* Glass Effect Card */
+.main-card, .auth-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    padding: 35px;
+    width: 420px;
     border-radius: 20px;
-    box-shadow: 0 20px 50px #6a444433;
-    text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
-}
-
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dark-toggle {
-    border: none;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.progress-container {
-    position: relative;
-    width: 160px;
-    margin: 20px auto;
-}
-
-.progress-ring__circle {
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-    transition: stroke-dashoffset 1s ease;
-}
-
-.score-text {
-    position: absolute;
-    top: 45px;
-    left: 0;
-    right: 0;
-}
-
-canvas {
-    margin-top: 30px;
-}
-
-.result-box {
-    text-align: left;
-    margin-top: 20px;
-}
-
-.Low { color: green; font-weight: bold; }
-.Moderate { color: orange; font-weight: bold; }
-.High { color: red; font-weight: bold; }
-
-.back-btn {
-    display: inline-block;
-    margin-top: 25px;
-    text-decoration: none;
-    background: #2193b0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     color: white;
-    padding: 10px 25px;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
     border-radius: 25px;
+    border: none;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.back-btn:hover {
-    background: #186a85;
+button:hover {
     transform: scale(1.05);
 }
 
-/* Dark Mode */
-.dark-mode {
-    background: #1e1e1e;
+/* Score Styling */
+.score-box {
+    text-align: center;
 }
 
-.dark-mode .main-card {
-    background: #2c2c2c;
+.score-box h1 {
+    font-size: 55px;
+    margin: 10px 0;
+}
+
+/* Deficiency Box */
+.def-box {
+    background: rgba(255, 0, 0, 0.25);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+/* Recommendation Box */
+.recommendation-box {
+    background: rgba(0, 255, 0, 0.2);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+/* Logout button */
+.logout-btn {
+    text-decoration: none;
+    background: crimson;
+    padding: 6px 12px;
+    border-radius: 15px;
     color: white;
-}
-
-.dark-mode .back-btn {
-    background: #ff7e5f;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
 }

@@ -13,20 +13,46 @@
         <a href="/logout" class="logout-btn">Logout</a>
     </div>
 
+    <!-- SCORE -->
     <div class="score-box">
         <h1>{{ overall }}/100</h1>
         <p>Overall Nutrition Score</p>
     </div>
 
-    <div class="recommendation-box">
-        <h3>🧠 Personalized Recommendations</h3>
+    <!-- PERSONALIZED QUOTE -->
+    <div class="quote-box">
+        <h3>{{ quote }}</h3>
+    </div>
+
+    <!-- DEFICIENCIES -->
+    {% if deficiencies %}
+    <div class="def-box">
+        <h3>⚠ Detected Deficiencies:</h3>
         <ul>
-            {% for r in recommendation %}
-                <li>{{ r }}</li>
+            {% for d in deficiencies %}
+                <li>{{ d }}</li>
             {% endfor %}
         </ul>
     </div>
+    {% else %}
+    <div class="def-box healthy">
+        <h3>✅ No Nutrient Deficiencies Found</h3>
+    </div>
+    {% endif %}
 
+    <!-- ACTIONS / WHAT TO DO -->
+    {% if actions %}
+    <div class="recommendation-box">
+        <h3>💡 What You Should Do:</h3>
+        <ul>
+            {% for a in actions %}
+                <li>{{ a }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <!-- BUTTONS -->
     <div class="button-group">
         <a href="/download" class="download-btn">Download PDF</a>
         <a href="/" class="back-btn">Check Again</a>
