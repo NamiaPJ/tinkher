@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nutrition Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Nutrition Report</h1>
+
+        <p><strong>BMI:</strong> {{ bmi }}</p>
+        <p><strong>Iron Risk:</strong> {{ iron }}</p>
+        <p><strong>Protein Risk:</strong> {{ protein }}</p>
+        <p><strong>Calcium Risk:</strong> {{ calcium }}</p>
+        <p><strong>Vitamin D Risk:</strong> {{ vitamin_d }}</p>
+        <p><strong>Vitamin B12 Risk:</strong> {{ b12 }}</p>
+
+        <h2>Overall Score: {{ overall }}/100</h2>
+
+        <a href="/">Check Again</a>
+    </div>
+</body>
+</html>

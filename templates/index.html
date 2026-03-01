@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nutrition Health Check</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Nutrition Health Check</h1>
+
+        <form action="/analyze" method="POST">
+
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="number" name="weight" placeholder="Weight (kg)" required>
+            <input type="number" name="height" placeholder="Height (cm)" required>
+
+            <h3>Weekly Intake (0–7)</h3>
+            <input type="number" name="leafy" placeholder="Leafy Vegetables" min="0" max="7" required>
+            <input type="number" name="fruits" placeholder="Fruits" min="0" max="7" required>
+            <input type="number" name="milk" placeholder="Milk/Dairy" min="0" max="7" required>
+            <input type="number" name="eggs" placeholder="Eggs" min="0" max="7" required>
+            <input type="number" name="meat" placeholder="Meat/Fish" min="0" max="7" required>
+            <input type="number" name="pulses" placeholder="Pulses/Beans" min="0" max="7" required>
+            <input type="number" name="junk" placeholder="Junk Food" min="0" max="7" required>
+
+            <input type="number" name="sunlight" placeholder="Sunlight (minutes/day)" required>
+
+            <button type="submit">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>
